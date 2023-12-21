@@ -14,7 +14,7 @@ RUN yum -y install perl-Starman --enablerepo=of
 RUN echo "Install Plack Middleware from DavisNetworks RPM repo"
 RUN yum -y install http://linux.davisnetworks.com/el7/updates/mrdvt92-release-8-3.el7.mrdvt92.noarch.rpm
 RUN yum -y install 'perl(SMS::Send)'
-RUN yum -y install 'perl(SMS::Send::Adapter::Node::Red)'
+RUN yum -y install 'perl(SMS::Send::Adapter::Node::Red)' #0.08
 RUN yum -y install 'perl(Plack::Middleware::Favicon_Simple)'
 RUN yum -y install 'perl(Sys::Path)' #add /etc to search path for INI file
 

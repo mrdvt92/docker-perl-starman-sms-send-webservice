@@ -1,6 +1,7 @@
 IMAGE_NAME=local/centos7-perl-starman-sms-send-webservice
 CONTAINER_NAME=sms-send-webservice
 CONTAINER_PORT=5027
+SMS_SEND_DRIVER=VoIP::MS
 
 all:
 	@echo "Syntax:"
@@ -17,11 +18,11 @@ rebuild: build rm run
 
 run_no_mount:
 	@echo "This option requires you to update SMS-Send.ini with your credintials and rebuild the image."
-	docker run --detach --name $(CONTAINER_NAME) --publish $(CONTAINER_PORT):80 $(IMAGE_NAME)
+	docker run --detach --name $(CONTAINER_NAME) --env SMS_SEND_ADAPTER_NODE_RED_DRIVER=$(SMS_SEND_DRIVER) --publish $(CONTAINER_PORT):80 $(IMAGE_NAME)
 
 run:
 	@echo "This option requires you to have /etc/SMS-Send.ini with your credintials."
-	docker run --detach --name $(CONTAINER_NAME) -v /etc/SMS-Send.ini:/etc/SMS-Send.ini --publish $(CONTAINER_PORT):80 $(IMAGE_NAME)
+	docker run --detach --name $(CONTAINER_NAME) -v /etc/SMS-Send.ini:/etc/SMS-Send.ini --env SMS_SEND_ADAPTER_NODE_RED_DRIVER=$(SMS_SEND_DRIVER) --publish $(CONTAINER_PORT):80 $(IMAGE_NAME)
 
 stop:
 	docker stop $(CONTAINER_NAME)
