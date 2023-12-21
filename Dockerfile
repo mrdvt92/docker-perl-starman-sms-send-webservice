@@ -26,8 +26,10 @@ RUN yum -y install 'perl(SMS::Send::VoIP::MS)'
 COPY ./app.psgi /app/
 COPY ./SMS-Send.ini /etc/
 
-#Expose Starman web server on port 80
-EXPOSE 80
+#Expose Starman web server on port 5027
+EXPOSE 5027
+
+HEALTHCHECK --interval=1m --timeout=2s CMD curl -LSfs http://127.0.0.1:5027/favicon.ico || exit 1
 
 #Command to start app
-CMD ["/usr/bin/starman", "--workers", "4", "--port", "80", "/app/app.psgi"]
+CMD ["/usr/bin/starman", "--workers", "4", "--port", "5027", "/app/app.psgi"]
