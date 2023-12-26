@@ -9,8 +9,9 @@ all:
 	@echo "  make rm      # stops and removes the image"
 	@echo "  make bash    # executes a bash shell on the running container"
 
+#ulimit hack from https://github.com/docker/buildx/issues/379#issuecomment-1274361933
 build:	Dockerfile app.psgi
-	docker build --rm --tag=$(IMAGE_NAME) .
+	docker build --ulimit nofile=1024000:1024000 --rm --tag=$(IMAGE_NAME) .
 
 rebuild: build rm run
 	@echo -n
