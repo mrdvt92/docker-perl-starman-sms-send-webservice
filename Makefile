@@ -18,11 +18,11 @@ rebuild: build rm run
 
 run_no_mount:
 	@echo "This option requires you to update SMS-Send.ini with your credintials and rebuild the image."
-	docker run --detach --name $(CONTAINER_NAME) --env SMS_SEND_ADAPTER_NODE_RED_DRIVER=$(SMS_SEND_DRIVER) --publish 5027:5027 $(IMAGE_NAME)
+	docker run --detach --restart=unless-stopped --name $(CONTAINER_NAME) --env SMS_SEND_ADAPTER_NODE_RED_DRIVER=$(SMS_SEND_DRIVER) --publish 5027:5027 $(IMAGE_NAME)
 
 run:
 	@echo "This option requires you to have /etc/SMS-Send.ini with your credintials."
-	docker run --detach --name $(CONTAINER_NAME) -v /etc/SMS-Send.ini:/etc/SMS-Send.ini --env SMS_SEND_ADAPTER_NODE_RED_DRIVER=$(SMS_SEND_DRIVER) --publish 5027:5027 $(IMAGE_NAME)
+	docker run --detach --restart=unless-stopped --name $(CONTAINER_NAME) -v /etc/SMS-Send.ini:/etc/SMS-Send.ini --env SMS_SEND_ADAPTER_NODE_RED_DRIVER=$(SMS_SEND_DRIVER) --publish 5027:5027 $(IMAGE_NAME)
 
 stop:
 	docker stop $(CONTAINER_NAME)
