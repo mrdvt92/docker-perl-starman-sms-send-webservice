@@ -37,3 +37,5 @@ firewall:
 	sudo firewall-cmd --zone=public --permanent --add-port=5027/tcp
 	sudo firewall-cmd --reload
 
+plackup:
+	SMS_SEND_ADAPTER_NODE_RED_DRIVER=$(SMS_SEND_DRIVER) plackup app.psgi

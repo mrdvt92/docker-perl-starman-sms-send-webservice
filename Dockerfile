@@ -16,11 +16,14 @@ RUN yum -y install http://linux.davisnetworks.com/el7/updates/mrdvt92-release-8-
 RUN yum -y install 'perl(SMS::Send)'
 RUN yum -y install 'perl(SMS::Send::Adapter::Node::Red)' #0.08
 RUN yum -y install 'perl(Plack::Middleware::Favicon_Simple)'
+RUN yum -y install 'perl(Plack::Middleware::Method_Allow)'
 RUN yum -y install 'perl(Sys::Path)' #add /etc to search path for INI file
 
 #Install Particular SMS Drivers Here
 RUN yum -y install 'perl(SMS::Send::VoIP::MS)'
 #RUN yum -y install 'perl(SMS::Send::NANP::Twilio)'
+
+RUN yum -y install 'perl(HTML::Tiny)'
 
 #Install PSGI Application into /app/ folder
 COPY ./app.psgi /app/
