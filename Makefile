@@ -1,4 +1,4 @@
-IMAGE_NAME=local/centos7-perl-starman-sms-send-webservice
+IMAGE_NAME=local/perl-starman-sms-send-webservice
 CONTAINER_NAME=sms-send-webservice
 SMS_SEND_DRIVER=VoIP::MS
 
