@@ -1,11 +1,7 @@
-FROM almalinux:8
+FROM almalinux:9
 
 RUN yum -y install epel-release
-RUN yum -y update
-RUN crb enable
-
-RUN yum -y install https://repo.openfusion.net/el-8-x86_64/openfusion-release-0.8-2.of.el8.noarch.rpm
-RUN yum -y install https://linux.davisnetworks.com/el8/updates/mrdvt92-release-8-3.el8.noarch.rpm
+RUN yum -y install https://linux.davisnetworks.com/el9/updates/mrdvt92-release-8-3.el9.mrdvt92.noarch.rpm
 
 #PSGI Server
 RUN yum -y install perl-Starman
@@ -19,7 +15,8 @@ RUN yum -y install perl-Sys-Path
 RUN yum -y install perl-Plack
 RUN yum -y install perl-Plack-Middleware-Method_Allow
 RUN yum -y install perl-Plack-Middleware-Favicon_Simple
-RUN yum -y install perl-SMS-Send-Adapter-Node-Red
+RUN yum -y install perl-SMS-Send-Adapter-Node-Red #0.10
+RUN yum -y install perl-CGI-PSGI
 
 #Install PSGI Application into /app/ folder
 COPY ./app.psgi /app/
