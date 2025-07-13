@@ -1,18 +1,18 @@
 # Name
 
-docker-almalinux8-perl-starman-sms-send-webservice
+docker-perl-starman-sms-send-webservice
 
 # Docker Image
 
-This Docker image is built from the AlmaLinux 8 Docker Image
+This Docker image is built from the AlmaLinux 9 Docker Image
 
 # Starman
 
-[Starman](https://metacpan.org/release/Starman) is a high-performance preforking [PSGI/Plack](https://metacpan.org/release/Plack) web server. We install it with `yum` from RPMs at [OpenFusion](https://repo.openfusion.net/el-8-x86_64)
+[Starman](https://metacpan.org/release/Starman) is a high-performance preforking [PSGI/Plack](https://metacpan.org/release/Plack) web server.
 
 # SMS::Send
 
-We install SMS::Send with `cpanm`.
+The DockerFile installs SMS::Send from DavisNetworks yum repo.
 
 # PSGI App
 
